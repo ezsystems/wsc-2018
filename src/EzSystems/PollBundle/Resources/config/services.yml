@@ -1,0 +1,17 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    EzSystems\PollBundle\eZ\Publish\FieldType\Poll\ParameterProvider:
+        tags:
+            - {name: ezpublish.fieldType.parameterProvider, alias: ezpoll}
+
+    EzSystems\PollBundle\Controller\PollController: ~
+
+    EzSystems\PollBundle\EventListener\:
+        resource: "../../EventListener/*"
+        public: true
+        tags:
+            - { name: kernel.event_subscriber }

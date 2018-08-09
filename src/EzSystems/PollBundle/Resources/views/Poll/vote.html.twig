@@ -1,0 +1,7 @@
+{% extends 'EzPublishCoreBundle::pagelayout.html.twig' %}
+
+{% trans_default_domain 'ezpoll' %}
+
+{%- block content -%}
+    {{ 'ezpoll.success'|trans|raw|desc('Success.') }}
+{%- endblock content -%}

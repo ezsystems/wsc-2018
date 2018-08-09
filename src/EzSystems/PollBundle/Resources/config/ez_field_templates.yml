@@ -1,0 +1,14 @@
+system:
+    site:
+        field_templates:
+            - {template: 'EzSystemsPollBundle::ezpoll_view.html.twig', priority: 0}
+
+    admin_group:
+        field_templates:
+            - { template: 'EzSystemsPollBundle:platformui/field:ezpoll_view.html.twig', priority: 10 }
+
+        fielddefinition_settings_templates:
+            - {template: EzSystemsPollBundle:platformui/content_type/view:ezpoll.html.twig, priority: 0}
+
+        fielddefinition_edit_templates:
+            - {template: EzSystemsPollBundle:platformui/content_type/edit:ezpoll.html.twig, priority: 0}

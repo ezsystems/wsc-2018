@@ -1,0 +1,17 @@
+{% extends "EzPublishCoreBundle::content_fields.html.twig" %}
+
+{% block ezpoll_field %}
+    {% spaceless %}
+        {% if not ez_is_field_empty( content, field ) %}
+            <h1>{{ field.value.question }}</h1>
+            {{ form_start(parameters.pollForm, {'action': path('ez_systems_poll_vote', {
+                'contentId': content.id,
+                'fieldDefIdentifier': field.fieldDefIdentifier
+            }), 'method': 'POST'}) }}
+            {{ form_widget(parameters.pollForm) }}
+
+            <input type="submit"  value="{{ 'ezpoll.send'|trans|desc('Send') }}" />
+            {{ form_end(parameters.pollForm) }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}

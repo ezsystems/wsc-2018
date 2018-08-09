@@ -1,0 +1,19 @@
+services:
+    ezsystems.pollbundle.fieldtype.ezpoll:
+        parent: ezpublish.fieldType
+        class: EzSystems\PollBundle\eZ\Publish\FieldType\Poll\Type
+        tags:
+            - {name: ezpublish.fieldType, alias: ezpoll}
+            - {name: ezpublish.fieldType.nameable, alias: ezpoll}
+
+    ezsystems.pollbundle.fieldtype.ezpoll.converter:
+        class: EzSystems\PollBundle\eZ\Publish\FieldType\Poll\LegacyConverter
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezpoll}
+
+    ezsystems.pollbundle.fieldtype.ezpoll.form_mapper:
+        class: EzSystems\PollBundle\eZ\Publish\FieldType\Poll\FormMapper
+        tags:
+            - {name: ez.fieldFormMapper.value, fieldType: ezpoll}
+            - {name: ez.fieldFormMapper.definition, fieldType: ezpoll}
+        arguments: ['@ezpublish.api.service.field_type']

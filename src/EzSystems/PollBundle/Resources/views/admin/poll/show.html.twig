@@ -1,0 +1,59 @@
+{% extends '@ezdesign/layout.html.twig' %}
+
+{% trans_default_domain 'poll' %}
+
+{% block body_class %}ez-poll-list-view{% endblock %}
+
+{% block breadcrumbs %}
+    {% include '@ezdesign/parts/breadcrumbs.html.twig' with { items: [
+        { value: 'breadcrumb.admin'|trans(domain='messages')|desc('Admin') },
+        { url: path('ez_systems_poll_list'), value: 'poll.breadcrumb.list'|trans|desc('Polls') },
+        { value: 'poll.show.title'|trans|desc('Poll') }
+    ]} %}
+{% endblock %}
+
+{% block page_title %}
+    {% include '@ezdesign/parts/page_title.html.twig' with {
+        title: 'poll.list.title'|trans|desc('Polls'),
+        iconName: 'about'
+    } %}
+{% endblock %}
+
+{% block content %}
+    <section class="container mt-4 px-5">
+        <div class="ez-table-header">
+            <div class="ez-table-header__headline">{{ 'section.list.title'|trans|desc('Sections') }}</div>
+        </div>
+
+        <table class="table mb-3">
+            <thead>
+                <tr>
+                    <th>{{ 'poll.answer_id'|trans|desc('Answer ID') }}</th>
+                    <th>{{ 'poll.answer'|trans|desc('Answer') }}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for pollVote in pager.currentPageResults %}
+                <tr>
+                    <td>{{ pollVote.id }}</td>
+                    <td>{{ pollVote.answer }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {% if pager.haveToPaginate %}
+            <div class="row justify-content-center align-items-center mb-2">
+                <span class="ez-pagination__text">
+                    {{ 'poll.viewing'|trans({
+                    '%viewing%': pager.currentPageResults|length,
+                    '%total%': pager.nbResults})|desc('Viewing <strong>%viewing%</strong> out of <strong>%total%</strong> items')|raw }}
+                </span>
+            </div>
+            <div class="row justify-content-center align-items-center ez-pagination__btn mb-5">
+                {{ pagerfanta(pager, 'ez') }}
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}
