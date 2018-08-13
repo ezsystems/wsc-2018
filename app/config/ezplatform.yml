@@ -27,6 +27,9 @@ ezpublish:
 
     # System settings, grouped by siteaccess and/or siteaccess group
     system:
+        global:
+            limitation_value_templates:
+                - { template: 'EzSystemsPollBundle:Limitation:question_limitation_value.html.twig', priority: 0 }
         site_group:
             # Cache pool service, needs to be different per repository (database) on multi repository install.
             cache_service_name: '%cache_pool%'

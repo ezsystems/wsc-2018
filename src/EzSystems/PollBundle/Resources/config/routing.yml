@@ -10,5 +10,5 @@ ez_systems_poll_list:
     defaults: { _controller: EzSystemsPollBundle:Poll:list }
 
 ez_systems_poll_show:
-    path:     /poll/show/{fieldId}
+    path:     /poll/show/{fieldId}/{contentId}
     defaults: { _controller: EzSystemsPollBundle:Poll:show }

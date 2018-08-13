@@ -4,6 +4,7 @@ namespace EzSystems\PollBundle\Controller;
 
 use EzSystems\PollBundle\Entity\PollVote;
 use EzSystems\PollBundle\Form\Factory\FormFactory;
+use EzSystems\PollBundle\Repository\PollVoteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use eZ\Publish\API\Repository\Repository;
@@ -19,14 +20,19 @@ class PollController extends Controller
     /** @var \eZ\Publish\API\Repository\Repository */
     private $repository;
 
+    /** @var \EzSystems\PollBundle\Repository\PollVoteRepository */
+    private $poolVoteRepository;
+
     /**
      * @param \EzSystems\PollBundle\Form\Factory\FormFactory
      * @param \eZ\Publish\API\Repository\Repository $repository
+     * @param \EzSystems\PollBundle\Repository\PollVoteRepository $poolVoteRepository
      */
-    public function __construct(FormFactory $formFactory,Repository $repository)
+    public function __construct(FormFactory $formFactory, Repository $repository, PollVoteRepository $poolVoteRepository)
     {
         $this->formFactory = $formFactory;
         $this->repository = $repository;
+        $this->poolVoteRepository = $poolVoteRepository;
     }
 
     /**
@@ -39,9 +45,7 @@ class PollController extends Controller
         $page = $request->query->get('page') ?? 1;
 
         $pagerfanta = new Pagerfanta(
-            new ArrayAdapter($this->getDoctrine()
-                ->getRepository(PollVote::class)
-                ->findAllOrderedByQuestion())
+            new ArrayAdapter($this->poolVoteRepository->findAllOrderedByQuestion())
         );
 
         $pagerfanta->setMaxPerPage(2);
@@ -54,16 +58,19 @@ class PollController extends Controller
 
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param int $fieldId
+     * @param int $contentId
      *
      * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
+     * @throws \eZ\Publish\Core\Base\Exceptions\UnauthorizedException
      */
-    public function showAction(Request $request, int $fieldId): Response
+    public function showAction(Request $request, int $fieldId, int $contentId): Response
     {
         $page = $request->query->get('page') ?? 1;
 
-        $pollAnswers = $this->getDoctrine()
-            ->getRepository(PollVote::class)
-            ->findAnswersByFieldId($fieldId);
+        $pollAnswers = $this->poolVoteRepository->findAnswersByFieldId($fieldId, $contentId);
 
         $pagerfanta = new Pagerfanta(
             new ArrayAdapter($pollAnswers)
@@ -91,6 +98,7 @@ class PollController extends Controller
         // 1) build the form
         $pollData = new PollVote();
         $pollData->setFieldId($content->getField($request->get('fieldDefIdentifier'))->id);
+        $pollData->setContentId($content->id);
         $pollForm = $this->formFactory->createPollForm($pollData, null, ['answers' => $answers]);
 
         // 2) handle the submit (will only happen on POST)

@@ -34,12 +34,22 @@
             </thead>
             <tbody>
             {% for pollVote in pager.currentPageResults %}
+
+                {% set show_link = path( 'ez_systems_poll_show', {
+                    'fieldId': pollVote.fieldId,
+                    'contentId': pollVote.contentId
+                } ) %}
+
                 <tr>
                     <td>{{ pollVote.fieldId }}</td>
-                    <td><a href="{{ path( 'ez_systems_poll_show', {'fieldId': pollVote.fieldId} ) }}">{{ pollVote.question }}</a></td>
+                    <td>
+                        <a href="{{ show_link }}">
+                            {{ pollVote.question }}
+                        </a>
+                    </td>
                     <td class="text-right">
                         <a title="{{ 'poll.show_result'|trans|desc('Show') }}"
-                           href="{{ path('ez_systems_poll_show', {'fieldId': pollVote.fieldId}) }}"
+                           href="{{ show_link }}"
                            class="btn btn-icon mx-3">
                             <svg class="ez-icon ez-icon-about">
                                 <use xlink:href="{{ asset('bundles/ezplatformadminui/img/ez-icons.svg') }}#about"></use>

@@ -40,6 +40,12 @@ class PollVote
     private $fieldId;
 
     /**
+     * @ORM\Column(type="integer")
+     * @Assert\NotNull()
+     */
+    private $contentId;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -93,6 +99,22 @@ class PollVote
     public function setFieldId($fieldId): void
     {
         $this->fieldId = $fieldId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContentId()
+    {
+        return $this->contentId;
+    }
+
+    /**
+     * @param mixed $contentId
+     */
+    public function setContentId($contentId): void
+    {
+        $this->contentId = $contentId;
     }
 
 }

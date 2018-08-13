@@ -1,3 +1,6 @@
+imports:
+    - {resource: repositories.yml}
+
 services:
     _defaults:
         autowire: true
@@ -15,3 +18,19 @@ services:
         public: true
         tags:
             - { name: kernel.event_subscriber }
+
+    ## Implemented Limitations
+    EzSystems\PollBundle\Security\Limitation\QuestionLimitationType:
+        arguments: ["@ezpublish.api.persistence_handler"]
+        tags:
+            - {name: ezpublish.limitationType, alias: Question}
+
+    EzSystems\PollBundle\Security\Limitation\Mapper\QuestionLimitationFormMapper:
+        arguments:
+            # ...
+        calls:
+            - [setFormTemplate, ["EzSystemsRepositoryFormsBundle:Limitation:base_limitation_values.html.twig"]]
+        tags:
+            - { name: ez.limitation.formMapper, limitationType: Question }
+            - { name: ez.limitation.valueMapper, limitationType: Question }
+
