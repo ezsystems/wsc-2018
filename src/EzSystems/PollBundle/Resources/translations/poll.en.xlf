@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="74db0c2fbc15db7989ab8b3dbc96cf3e269223c6" resname="poll.answer">
+        <source>Answer</source>
+        <target state="new">Answer</target>
+        <note>key: poll.answer</note>
+      </trans-unit>
+      <trans-unit id="b677e2ebe8f34c82df9a8ebf17a835d3bbb06718" resname="poll.answer_id">
+        <source>Answer ID</source>
+        <target state="new">Answer ID</target>
+        <note>key: poll.answer_id</note>
+      </trans-unit>
+      <trans-unit id="f80f314f7c3a20cca6c34324d1b1e7c3cd625a26" resname="poll.breadcrumb.list">
+        <source>Polls</source>
+        <target state="new">Polls</target>
+        <note>key: poll.breadcrumb.list</note>
+      </trans-unit>
+      <trans-unit id="bf3e262a41fef0734e922b8fafa39a8b28085e20" resname="poll.field_id">
+        <source>Field ID</source>
+        <target state="new">Field ID</target>
+        <note>key: poll.field_id</note>
+      </trans-unit>
+      <trans-unit id="440440b42e1a92f0b100068c80448b4c9bbae76f" resname="poll.list.title">
+        <source>Polls</source>
+        <target state="new">Polls</target>
+        <note>key: poll.list.title</note>
+      </trans-unit>
+      <trans-unit id="732aa9e979aab42b57c05e0fc6bc722deb189013" resname="poll.question">
+        <source>Question</source>
+        <target state="new">Question</target>
+        <note>key: poll.question</note>
+      </trans-unit>
+      <trans-unit id="b7df2fad01c4f8af128d077a21a2e9b64ff6b809" resname="poll.show.title">
+        <source>Poll</source>
+        <target state="new">Poll</target>
+        <note>key: poll.show.title</note>
+      </trans-unit>
+      <trans-unit id="b4f3e7ce44db64ac5caa4d9f36719f299236fdf7" resname="poll.show_result">
+        <source>Show</source>
+        <target state="new">Show</target>
+        <note>key: poll.show_result</note>
+      </trans-unit>
+      <trans-unit id="4987875954260254281b54da9a4e5897aa1aa410" resname="poll.viewing">
+        <source><![CDATA[Viewing <strong>%viewing%</strong> out of <strong>%total%</strong> items]]></source>
+        <target state="new"><![CDATA[Viewing <strong>%viewing%</strong> out of <strong>%total%</strong> items]]></target>
+        <note>key: poll.viewing</note>
+      </trans-unit>
+      <trans-unit id="d0db9c352babe46e30354a78d9b3eccd226d7602" resname="section.list.title">
+        <source>Sections</source>
+        <target state="new">Sections</target>
+        <note>key: section.list.title</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

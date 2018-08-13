@@ -2,6 +2,8 @@
 
 namespace EzSystems\PollBundle\Controller;
 
+use eZ\Publish\API\Repository\NotificationService;
+use eZ\Publish\API\Repository\Values\Notification\CreateStruct;
 use EzSystems\PollBundle\Entity\PollVote;
 use EzSystems\PollBundle\Form\Factory\FormFactory;
 use EzSystems\PollBundle\Repository\PollVoteRepository;
@@ -20,6 +22,9 @@ class PollController extends Controller
     /** @var \eZ\Publish\API\Repository\Repository */
     private $repository;
 
+    /** @var \eZ\Publish\API\Repository\NotificationService */
+    private $notificationService;
+
     /** @var \EzSystems\PollBundle\Repository\PollVoteRepository */
     private $poolVoteRepository;
 
@@ -27,11 +32,17 @@ class PollController extends Controller
      * @param \EzSystems\PollBundle\Form\Factory\FormFactory
      * @param \eZ\Publish\API\Repository\Repository $repository
      * @param \EzSystems\PollBundle\Repository\PollVoteRepository $poolVoteRepository
+     * @param \eZ\Publish\API\Repository\NotificationService $notificationService
      */
-    public function __construct(FormFactory $formFactory, Repository $repository, PollVoteRepository $poolVoteRepository)
-    {
+    public function __construct(
+        FormFactory $formFactory,
+        Repository $repository,
+        NotificationService $notificationService,
+        PollVoteRepository $poolVoteRepository
+    ) {
         $this->formFactory = $formFactory;
         $this->repository = $repository;
+        $this->notificationService = $notificationService;
         $this->poolVoteRepository = $poolVoteRepository;
     }
 
@@ -113,10 +124,26 @@ class PollController extends Controller
 
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
+            $this->sendNotification($pollData, $content->contentInfo->ownerId);
 
             return $this->render('EzSystemsPollBundle:Poll:vote.html.twig');
         }
 
         return $this->render('EzSystemsPollBundle:Poll:vote.html.twig');
+    }
+
+    private function sendNotification(PollVote $pollData, int $sendToUserId): void
+    {
+        $notificationStruct = new CreateStruct();
+
+        $notificationStruct->ownerId = $sendToUserId;
+        $notificationStruct->type = 'Poll:Vote';
+        $notificationStruct->isPending = true;
+        $notificationStruct->data = [
+            'fieldId' => $pollData->getFieldId(),
+            'question' => $pollData->getQuestion()
+        ];
+
+        $this->notificationService->createNotification($notificationStruct);
     }
 }
