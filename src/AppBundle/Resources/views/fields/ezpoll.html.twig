@@ -2,9 +2,9 @@
 
 {% block ezpoll_field %}
     {% spaceless %}
-        {% set field_value %}
-            {{ field.value.contents|raw }}
-        {% endset %}
-        {{ block( 'simple_block_field' ) }}
+        {% for answer in field.value.answers %}
+            {% set field_value = answer %}
+            {{ block( 'simple_block_field' ) }}
+        {% endfor %}
     {% endspaceless %}
 {% endblock %}

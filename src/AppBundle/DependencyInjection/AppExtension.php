@@ -25,8 +25,11 @@ class AppExtension extends Extension implements PrependExtensionInterface
     private function prependYamlConfigFile(ContainerBuilder $container, $extensionName, $configFilePath)
     {
         $config = Yaml::parse(file_get_contents($configFilePath));
-        $container->prependExtensionConfig($extensionName, $config);
+        foreach ($config as $extension => $settings) {
+            $container->prependExtensionConfig($extension, $settings);
+        }
     }
+
     /**
      * {@inheritdoc}
      */

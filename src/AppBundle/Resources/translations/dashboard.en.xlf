@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="8f2d000c044a9f04c457499e57f6fbbb8360e23f" resname="dashboard.tab.all_content.empty">
+        <source>No content items. Content items you create will appear here</source>
+        <target>No content items. Content items you create will appear here</target>
+        <note>key: dashboard.tab.all_content.empty</note>
+      </trans-unit>
+      <trans-unit id="749d4759e304735bcec6ef6ec10af43e70f1f289" resname="dashboard.table.all.content.edit">
+        <source>Edit Content</source>
+        <target>Edit Content</target>
+        <note>key: dashboard.table.all.content.edit</note>
+      </trans-unit>
+      <trans-unit id="1714e1ccbf2724355b0e3c5501fec4e42a58aeae" resname="dashboard.table.poll.answers">
+        <source>Answers</source>
+        <target>Answers</target>
+        <note>key: dashboard.table.poll.answers</note>
+      </trans-unit>
+      <trans-unit id="51e54351664c64a6102fa6c7309853b7abe12f2e" resname="dashboard.table.poll.content">
+        <source>Content</source>
+        <target>Content</target>
+        <note>key: dashboard.table.poll.content</note>
+      </trans-unit>
+      <trans-unit id="817d71276372543973f0dc4221b3847bdb442fa5" resname="dashboard.table.poll.question">
+        <source>Question</source>
+        <target>Question</target>
+        <note>key: dashboard.table.poll.question</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

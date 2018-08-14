@@ -40,7 +40,7 @@ class PollFieldType extends AbstractType
                 'answers',
                 AnswerCollectionType::class,
                 [
-                    'label' => /** @Desc("Alternative text") */ 'content.field_type.ezpoll.alternative_text',
+                    'label' => /** @Desc("Answers") */ 'content.field_type.ezpoll.answers',
                     'answer_limit' => $options['answer_limit']
                 ]
             );

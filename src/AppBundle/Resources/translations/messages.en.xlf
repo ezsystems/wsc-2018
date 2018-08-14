@@ -8,37 +8,37 @@
     <body>
       <trans-unit id="d21d07085caa55b0fee2fc054a6878bbdb24ae78" resname="breadcrumb.admin">
         <source>Admin</source>
-        <target state="new">Admin</target>
+        <target>Admin</target>
         <note>key: breadcrumb.admin</note>
       </trans-unit>
       <trans-unit id="431ce36f4782d0761848060f83286fc92ead4eca" resname="ezpoll.send">
         <source>Send</source>
-        <target state="new">Send</target>
+        <target>Send</target>
         <note>key: ezpoll.send</note>
       </trans-unit>
       <trans-unit id="3f750fe6c08e46bed0e3cae0021c3b0b2c3e3751" resname="field_definition.ezpoll.answer_limit">
         <source>Selection limit</source>
-        <target state="new">Selection limit</target>
+        <target>Selection limit</target>
         <note>key: field_definition.ezpoll.answer_limit</note>
       </trans-unit>
       <trans-unit id="1a15fa0f3b4d94c89ae7368628d515ba87efcd3e" resname="field_definition.ezpoll.max_length">
         <source>field_definition.ezpoll.max_length</source>
-        <target state="new">field_definition.ezpoll.max_length</target>
+        <target>field_definition.ezpoll.max_length</target>
         <note>key: field_definition.ezpoll.max_length</note>
       </trans-unit>
       <trans-unit id="b44c93f65e554c7d7079bb3f2b6f65a79269aec0" resname="field_definition.ezpoll.min_length">
         <source>field_definition.ezpoll.min_length</source>
-        <target state="new">field_definition.ezpoll.min_length</target>
+        <target>field_definition.ezpoll.min_length</target>
         <note>key: field_definition.ezpoll.min_length</note>
       </trans-unit>
       <trans-unit id="5b34d48d0f7c6b14fa082c04726b3e43810ec4db" resname="poll.notification.message">
         <source>Vote casted</source>
-        <target state="new">Vote casted</target>
+        <target>Vote casted</target>
         <note>key: poll.notification.message</note>
       </trans-unit>
       <trans-unit id="c50d41741d7836924f55634ef036871024323b68" resname="poll.notification.title">
         <source>Question:</source>
-        <target state="new">Question:</target>
+        <target>Question:</target>
         <note>key: poll.notification.title</note>
       </trans-unit>
     </body>

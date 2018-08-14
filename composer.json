@@ -1,5 +1,5 @@
 {
-    "name": "ezsystems/ezplatform",
+    "name": "ezsystems/wsc-2018",
     "description": "eZ Platform distribution",
     "homepage": "https://github.com/ezsystems/ezplatform",
     "license": "GPL-2.0-only",
@@ -15,8 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "AppBundle\\": "src/AppBundle/",
-            "EzSystems\\PollBundle\\": "src/EzSystems/PollBundle/"
+            "AppBundle\\": "src/AppBundle/"
         },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },

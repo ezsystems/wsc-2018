@@ -7,8 +7,8 @@
     </header>
     <body>
       <trans-unit id="fb4930c8f77d0c787ff2d8e0fafbb99a417a37d0" resname="main__poll__list">
-        <source>Polls</source>
-        <target state="new">Polls</target>
+        <source>Voting results</source>
+        <target>Voting results</target>
         <note>key: main__poll__list</note>
       </trans-unit>
     </body>
