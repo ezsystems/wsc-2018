@@ -76,7 +76,7 @@ class FormMapper implements FieldValueFormMapperInterface, FieldDefinitionFormMa
                         'value',
                         PollFieldType::class,
                         [
-                            'required' => false,
+                            'required' => $fieldDefinition->isRequired,
                             'label' => $label,
                             'answer_limit' => $answerLimit,
                         ]

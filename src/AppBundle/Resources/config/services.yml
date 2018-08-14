@@ -1,40 +1,19 @@
-imports:
-    - {resource: repositories.yml}
-
 services:
     _defaults:
         autowire: true
         autoconfigure: true
         public: false
 
-    AppBundle\eZ\Publish\FieldType\Poll\ParameterProvider:
-        tags:
-            - {name: ezpublish.fieldType.parameterProvider, alias: ezpoll}
-
-    AppBundle\Controller\PollController: ~
-
-    AppBundle\EventListener\:
-        resource: "../../EventListener/*"
-        public: true
-        tags:
-            - { name: kernel.event_subscriber }
-
-    AppBundle\Notification\Renderer:
-        tags:
-        - { name: ezpublish.notification.renderer, alias: 'Poll:Vote' }
-
-    ## Implemented Limitations
-    AppBundle\Security\Limitation\QuestionLimitationType:
-        arguments: ["@ezpublish.api.persistence_handler"]
-        tags:
-            - {name: ezpublish.limitationType, alias: Question}
-
-    AppBundle\Security\Limitation\Mapper\QuestionLimitationFormMapper:
+    EzSystems\EzPlatformAdminUi\Component\TwigComponent:
         arguments:
-            # ...
-        calls:
-            - [setFormTemplate, ["EzSystemsRepositoryFormsBundle:Limitation:base_limitation_values.html.twig"]]
+            $template: 'AppBundle:adminui/component:ezpoll_edit_js.html.twig'
+            $parameters: []
         tags:
-            - { name: ez.limitation.formMapper, limitationType: Question }
-            - { name: ez.limitation.valueMapper, limitationType: Question }
+            - { name: ezplatform.admin_ui.component, group: 'content-edit-form-after' }
+            - { name: ezplatform.admin_ui.component, group: 'content-create-form-after' }
 
+    EzSystems\EzPlatformAdminUi\Component\LinkComponent:
+        arguments:
+            $href: '/bundles/app/css/style.css'
+        tags:
+            - { name: ezplatform.admin_ui.component, group: 'stylesheet-head' }

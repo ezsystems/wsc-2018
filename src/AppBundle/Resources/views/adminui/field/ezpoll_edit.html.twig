@@ -1,0 +1,40 @@
+{% extends "EzPublishCoreBundle::content_fields.html.twig" %}
+
+{% trans_default_domain 'ezpoll' %}
+
+{% block ezplatform_fieldtype_ezpoll_row %}
+    {% if form.answers.vars.prototype is defined %}
+        {%- set wrapper_attr = attr|merge({'data-template': form_row(form.answers.vars.prototype) }) -%}
+    {% endif %}
+    {{ block('form_row_fieldtype') }}
+{% endblock %}
+
+{% block ezplatform_fieldtype_ezpoll_widget %}
+    {{ form_row(form.question) }}
+    {{ form_label(form.answers) }}
+    {% for child in form.answers %}
+        {{ form_row(child) }}
+    {% endfor %}
+{% endblock %}
+
+{% block _ezrepoforms_content_edit_fieldsData_entry_value_answers_entry_row -%}
+    <div class="ez-data-source__answer form-row">
+        <div class="col ez-data-source__field">
+            {{- form_widget(form) -}}
+        </div>
+        <div class="col ez-data-source__actions">
+            <button type="button" class="ez-data-source__action ez-btn btn btn-secondary btn-icon ez-btn--secondary ez-btn--remove-answer"
+                    title="{{ 'ezanswer.action.delete'|trans|desc('Remove answer') }}" disabled>
+                <svg class="ez-icon ez-icon-trash">
+                    <use xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#trash"></use>
+                </svg>
+            </button>
+            <button type="button" class="ez-data-source__action ez-btn btn btn-secondary btn-icon ez-btn--secondary ez-btn--add-answer"
+                    title="{{ 'ezanswer.action.add'|trans|desc('Add answer') }}">
+                <svg class="ez-icon ez-icon-create">
+                    <use xlink:href="/bundles/ezplatformadminui/img/ez-icons.svg#create"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+{%- endblock %}

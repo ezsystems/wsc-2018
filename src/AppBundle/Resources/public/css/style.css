@@ -1,0 +1,55 @@
+.ez-field-edit--ezpoll .btn-icon {
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+}
+
+.ez-field-edit--ezpoll .btn-icon .ez-icon {
+    fill: #ffffff;
+    width: 1rem;
+    height: 1rem;
+}
+
+.ez-field-edit--ezpoll .ez-data-source__answer {
+    background-color: #f3f3f3;
+    padding: 1rem;
+}
+.ez-field-edit--ezpoll .ez-data-source__label-wrapper .ez-data-source__label {
+    margin-bottom: 0;
+}
+.ez-field-edit--ezpoll .ez-data-source__actions {
+    display: flex;
+    align-items: center;
+}
+.ez-field-edit--ezpoll .ez-data-source__actions button {
+    margin: 0 0.35rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    padding-top: 0.25rem;
+}
+.ez-field-edit--ezpoll .ez-data-source__actions button .ez-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.ez-field-edit--ezpoll.is-invalid .ez-data-source__field.is-invalid {
+    color: #d92d42;
+}
+.ez-field-edit--ezpoll.is-invalid .ez-field-edit__data:before {
+    display: none;
+}
+.ez-field-edit--ezpoll.is-invalid .ez-data-source__answer {
+    position: relative;
+}
+.ez-field-edit--ezpoll.is-invalid .ez-data-source__answer.is-invalid:before {
+    content: "!";
+    position: absolute;
+    top: 0;
+    left: -20px;
+    width: 20px;
+    background: red;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}

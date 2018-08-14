@@ -11,10 +11,20 @@
         <target state="new">Alternative text</target>
         <note>key: content.field_type.ezpoll.alternative_text</note>
       </trans-unit>
-      <trans-unit id="cc03e6fc5ea547d730c78f568dfef1962fe064e5" resname="ezpoll.success">
-        <source>Success.</source>
-        <target state="new">Success.</target>
-        <note>key: ezpoll.success</note>
+      <trans-unit id="ef6d3d144bdd5742eff3ec0cd3b22688e2f978e0" resname="content.field_type.ezpoll.answers">
+        <source>Answers text</source>
+        <target state="new">Answers text</target>
+        <note>key: content.field_type.ezpoll.answers</note>
+      </trans-unit>
+      <trans-unit id="5f2b72e9e1fd76f52dd044fee9232b3ecee37635" resname="ezanswer.action.add">
+        <source>Add answer</source>
+        <target state="new">Add answer</target>
+        <note>key: ezanswer.action.add</note>
+      </trans-unit>
+      <trans-unit id="c808fcffc3ea4265107f7819b75fe93b20f276e6" resname="ezanswer.action.delete">
+        <source>Remove answer</source>
+        <target state="new">Remove answer</target>
+        <note>key: ezanswer.action.delete</note>
       </trans-unit>
     </body>
   </file>
