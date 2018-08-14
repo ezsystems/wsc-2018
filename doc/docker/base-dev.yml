@@ -55,6 +55,8 @@ services:
      - TERM=dumb
     networks:
      - backend
+    ports:
+     - "3306:3306"
 
 networks:
   frontend:

@@ -1,0 +1,40 @@
+imports:
+    - {resource: repositories.yml}
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    AppBundle\eZ\Publish\FieldType\Poll\ParameterProvider:
+        tags:
+            - {name: ezpublish.fieldType.parameterProvider, alias: ezpoll}
+
+    AppBundle\Controller\PollController: ~
+
+    AppBundle\EventListener\:
+        resource: "../../EventListener/*"
+        public: true
+        tags:
+            - { name: kernel.event_subscriber }
+
+    AppBundle\Notification\Renderer:
+        tags:
+        - { name: ezpublish.notification.renderer, alias: 'Poll:Vote' }
+
+    ## Implemented Limitations
+    AppBundle\Security\Limitation\QuestionLimitationType:
+        arguments: ["@ezpublish.api.persistence_handler"]
+        tags:
+            - {name: ezpublish.limitationType, alias: Question}
+
+    AppBundle\Security\Limitation\Mapper\QuestionLimitationFormMapper:
+        arguments:
+            # ...
+        calls:
+            - [setFormTemplate, ["EzSystemsRepositoryFormsBundle:Limitation:base_limitation_values.html.twig"]]
+        tags:
+            - { name: ez.limitation.formMapper, limitationType: Question }
+            - { name: ez.limitation.valueMapper, limitationType: Question }
+

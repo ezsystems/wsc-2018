@@ -1,5 +1,5 @@
 ez_systems_poll:
-    resource: "@EzSystemsPollBundle/Resources/config/routing.yml"
+    resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
 
 login:

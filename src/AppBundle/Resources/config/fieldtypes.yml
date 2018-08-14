@@ -1,0 +1,16 @@
+services:
+    AppBundle\eZ\Publish\FieldType\Poll\Type:
+        parent: ezpublish.fieldType
+        tags:
+            - {name: ezpublish.fieldType, alias: ezpoll}
+            - {name: ezpublish.fieldType.nameable, alias: ezpoll}
+
+    AppBundle\eZ\Publish\FieldType\Poll\LegacyConverter:
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezpoll}
+
+    AppBundle\eZ\Publish\FieldType\Poll\FormMapper:
+        tags:
+            - {name: ez.fieldFormMapper.value, fieldType: ezpoll}
+            - {name: ez.fieldFormMapper.definition, fieldType: ezpoll}
+        arguments: ['@ezpublish.api.service.field_type']

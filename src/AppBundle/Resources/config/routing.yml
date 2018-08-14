@@ -1,0 +1,14 @@
+ez_systems_poll_vote:
+    path:     /poll/vote
+    defaults: { _controller: AppBundle:Poll:vote }
+ez_systems_poll_result:
+    path:     /poll/result
+    defaults: { _controller: AppBundle:Poll:result }
+
+ez_systems_poll_list:
+    path:     /poll/list
+    defaults: { _controller: AppBundle:Poll:list }
+
+ez_systems_poll_show:
+    path:     /poll/show/{fieldId}/{contentId}
+    defaults: { _controller: AppBundle:Poll:show }
