@@ -6,6 +6,7 @@ use eZ\Publish\API\Repository\NotificationService;
 use AppBundle\Entity\PollVote;
 use AppBundle\Form\Factory\FormFactory;
 use AppBundle\Repository\PollVoteRepository;
+use eZ\Publish\API\Repository\Values\Notification\CreateStruct;
 use Pagerfanta\Adapter\ArrayAdapter;
 use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -72,6 +73,8 @@ class PollController extends Controller
             $entityManager->persist($pollData);
             $entityManager->flush();
 
+            $this->sendNotification($pollData, $content->contentInfo->ownerId);
+
             return $this->render('AppBundle:Poll:vote.html.twig');
         }
 
@@ -127,4 +130,18 @@ class PollController extends Controller
         ]);
     }
 
+    private function sendNotification(PollVote $pollData, int $sendToUserId): void
+    {
+        $notificationStruct = new CreateStruct();
+
+        $notificationStruct->ownerId = $sendToUserId;
+        $notificationStruct->type = 'Poll:Vote';
+        $notificationStruct->isPending = true;
+        $notificationStruct->data = [
+            'fieldId' => $pollData->getFieldId(),
+            'question' => $pollData->getQuestion()
+        ];
+
+        $this->notificationService->createNotification($notificationStruct);
+    }
 }

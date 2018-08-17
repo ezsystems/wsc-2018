@@ -32,3 +32,7 @@ services:
         public: true
         tags:
             - { name: kernel.event_subscriber }
+
+    AppBundle\Notification\Renderer:
+        tags:
+            - { name: ezpublish.notification.renderer, alias: 'Poll:Vote' }
