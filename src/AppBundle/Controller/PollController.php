@@ -6,6 +6,8 @@ use eZ\Publish\API\Repository\NotificationService;
 use AppBundle\Entity\PollVote;
 use AppBundle\Form\Factory\FormFactory;
 use AppBundle\Repository\PollVoteRepository;
+use Pagerfanta\Adapter\ArrayAdapter;
+use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use eZ\Publish\API\Repository\Repository;
@@ -76,8 +78,30 @@ class PollController extends Controller
         return $this->redirect($request->headers->get('referer'));
     }
 
-    public function listAction()
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listAction(Request $request): Response
+    {
+        $page = $request->query->get('page') ?? 1;
+
+        $pagerfanta = new Pagerfanta(
+            new ArrayAdapter($this->poolVoteRepository->findAllOrderedByQuestion())
+        );
+
+        $pagerfanta->setMaxPerPage(5);
+        $pagerfanta->setCurrentPage(min($page, $pagerfanta->getNbPages()));
+
+        return $this->render('AppBundle:admin/poll:list.html.twig', [
+            'pager' => $pagerfanta,
+        ]);
+    }
+
+    public function showAction()
     {
         return new Response();
     }
+
 }
