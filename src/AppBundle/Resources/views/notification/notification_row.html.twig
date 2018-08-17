@@ -1,0 +1,17 @@
+{% extends '@EzPlatformAdminUi/notifications/notification_row.html.twig' %}
+
+{% block icon %}
+    <span class="type__icon">
+        <svg class="ez-icon">
+            <use xlink:href="{{ asset('bundles/ezplatformadminui/img/ez-icons.svg') }}#about"></use>
+        </svg>
+    </span>
+{% endblock %}
+
+
+{% block message %}
+    <td class="ez-notifications-modal__description">
+        <p class="description__title">{{ 'poll.notification.title'|trans|desc('Question:') }} <span class="description__title__item">{{ notification.data.question }}</span></p>
+        <p class="description__text">{{ 'poll.notification.message'|trans|desc('Vote casted') }}</p>
+    </td>
+{% endblock %}
