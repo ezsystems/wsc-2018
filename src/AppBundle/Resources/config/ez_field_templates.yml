@@ -2,7 +2,7 @@ ezpublish:
     system:
         site:
             field_templates:
-                - { template: AppBundle:fields:ezpoll.html.twig, priority: 0}
+                - { template: AppBundle::ezpoll_view.html.twig, priority: 0}
 
         admin_group:
             field_templates:

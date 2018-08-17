@@ -1,0 +1,3 @@
+ez_systems_poll_vote:
+    path:     /poll/vote
+    defaults: { _controller: AppBundle:Poll:vote }

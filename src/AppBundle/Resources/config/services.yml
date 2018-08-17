@@ -17,3 +17,12 @@ services:
             $href: '/bundles/app/css/style.css'
         tags:
             - { name: ezplatform.admin_ui.component, group: 'stylesheet-head' }
+
+    AppBundle\eZ\Publish\FieldType\Poll\ParameterProvider:
+        tags:
+            - {name: ezpublish.fieldType.parameterProvider, alias: ezpoll }
+
+    AppBundle\Controller\PollController: ~
+
+    AppBundle\Repository\:
+        resource: ../../Repository
