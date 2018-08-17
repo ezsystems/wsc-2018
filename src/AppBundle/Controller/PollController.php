@@ -99,9 +99,32 @@ class PollController extends Controller
         ]);
     }
 
-    public function showAction()
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param int $fieldId
+     * @param int $contentId
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
+     * @throws \eZ\Publish\Core\Base\Exceptions\UnauthorizedException
+     */
+    public function showAction(Request $request, int $fieldId, int $contentId): Response
     {
-        return new Response();
+        $page = $request->query->get('page') ?? 1;
+
+        $pollAnswers = $this->poolVoteRepository->findAnswersByFieldId($fieldId, $contentId);
+
+        $pagerfanta = new Pagerfanta(
+            new ArrayAdapter($pollAnswers)
+        );
+
+        $pagerfanta->setMaxPerPage(2);
+        $pagerfanta->setCurrentPage(min($page, $pagerfanta->getNbPages()));
+
+        return $this->render('AppBundle:admin/poll:show.html.twig', [
+            'pager' => $pagerfanta,
+        ]);
     }
 
 }

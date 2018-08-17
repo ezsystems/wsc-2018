@@ -36,4 +36,15 @@ final class PollVoteRepository
             )
             ->getResult();
     }
+
+    public function findAnswersByFieldId(int $fieldId, int $contentId)
+    {
+        $query = $this->getManager()
+            ->createQuery(
+                'SELECT p FROM AppBundle:PollVote p WHERE p.fieldId = :fieldId ORDER BY p.id ASC'
+            );
+        $query->setParameter('fieldId', $fieldId);
+
+        return $query->getResult();
+    }
 }
