@@ -9,6 +9,7 @@ use AppBundle\Repository\PollVoteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use eZ\Publish\API\Repository\Repository;
+use Symfony\Component\HttpFoundation\Response;
 
 class PollController extends Controller
 {
@@ -73,5 +74,10 @@ class PollController extends Controller
         }
 
         return $this->redirect($request->headers->get('referer'));
+    }
+
+    public function listAction()
+    {
+        return new Response();
     }
 }
