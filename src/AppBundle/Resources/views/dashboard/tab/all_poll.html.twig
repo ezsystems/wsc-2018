@@ -1,0 +1,47 @@
+{% trans_default_domain 'dashboard' %}
+
+{% if data|length %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>{{ 'dashboard.table.poll.content'|trans|desc('Content') }}</th>
+            <th>{{ 'dashboard.table.poll.question'|trans|desc('Question') }}</th>
+            <th>{{ 'dashboard.table.poll.answers'|trans|desc('Answers') }}</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for row in data %}
+            <tr>
+                <td><a href="{{ url('_ez_content_view', { 'contentId': row.contentId }) }}">{{ row.name }}</a></td>
+                <td>{{ row.question }}</td>
+                <td>
+                    {% if row.answers is iterable %}
+                        <ul>
+                            {% for answer in row.answers if answer is not null %}
+                            <li>
+                                {{ answer }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-icon ez-btn--content-edit"
+                            title="{{ 'dashboard.table.all.content.edit'|trans|desc('Edit Content') }}"
+                            data-content-id="{{ row.contentId}}"
+                            data-version-no="{{ row.version }}"
+                            data-language-code="{{ row.initialLanguageCode }}">
+                        <svg class="ez-icon ez-icon-edit">
+                            <use xlink:href="{{ asset('bundles/ezplatformadminui/img/ez-icons.svg') }}#edit"></use>
+                        </svg>
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p class="ez-table-no-content mb-0 py-0">{{ 'dashboard.tab.all_content.empty'|trans|desc('No content items. Content items you create will appear here') }}</p>
+{% endif %}
