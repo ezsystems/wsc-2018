@@ -14,6 +14,9 @@ ezpublish:
             fielddefinition_edit_templates:
                 - { template: AppBundle:adminui/content_type/edit:ezpoll.html.twig, priority: 0}
 
+            limitation_value_templates:
+                - { template: AppBundle:Limitation:question_limitation_value.html.twig, priority: 0 }
+
 twig:
     form_themes:
           - AppBundle:adminui/field:ezpoll_edit.html.twig
